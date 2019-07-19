@@ -1,0 +1,23 @@
+<div class="card" id="todo-detail">
+  <div class="card-header">
+    Details | {{ todo.title }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ todo.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      <span class="badge"
+        [ngClass]="{ 'badge-danger': todo.priority === 'high', 'badge-warning': todo.priority === 'medium', 'badge-success': todo.priority === 'low' }">
+        {{ todo.priority }}
+      </span>
+    </h6>
+    <p class="card-text">{{ todo.description }}</p>
+  </div>
+
+  <div class="card-footer text-right">
+    <button class="btn btn-success btn-sm">Mark as Done</button>
+    |
+    <button class="btn btn-primary btn-sm">Edit</button>
+    |
+    <button class="btn btn-danger btn-sm">Delete</button>
+  </div>
+</div>

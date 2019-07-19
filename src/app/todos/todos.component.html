@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-6 p-3">
+    <h4>TODOS</h4>
+
+    <div class="list-group">
+      <a
+        class="list-group-item list-group-item-action"
+        *ngFor="let todo of todos; let i = index"
+        [routerLink]="i">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{ todo.title }}</h5>
+          <small>
+            <span class="text-muted">Due on: </span>
+            <strong>{{ todo.dueDate | date:'MM/dd/yyyy' }}</strong>
+          </small>
+        </div>
+        <p class="mb-1">{{ todo.description }}</p>
+        <small
+          class="badge"
+          [ngClass]="{ 'badge-danger': todo.priority === 'high', 'badge-warning': todo.priority === 'medium', 'badge-success': todo.priority === 'low' }">
+          {{ todo.priority }}
+        </small>
+      </a>
+    </div>
+  </div>
+
+  <div class="col-sm-6 mt-5 pb-3 pl-5 pr-5">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,1 +1,60 @@
-<p>auth works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 offset-4">
+
+      <div
+        class="alert alert-danger"
+        *ngIf="error">
+        {{ error }}
+      </div>
+
+      <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            name="email"
+            ngModel
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            name="password"
+            ngModel
+            required
+            minlength="6">
+        </div>
+
+        <div class="form-group">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!authForm.valid">
+            <span
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+              *ngIf="isLoading">
+              <span class="sr-only">Loading...</span>
+            </span>
+            {{ isLoading ? 'Loading' : isLoginMode ? 'Login' : 'Sign Up' }}
+          </button>
+          |
+          <button
+            class="btn btn-secondary"
+            type="button"
+            (click)="onSwitch()">
+            Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
